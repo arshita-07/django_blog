@@ -1,0 +1,50 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{% static 'blog/main.css'%}">
+        {% if title %}
+        <title>Django blog - {{title}}</title>
+        {% else %}
+        <title>Django blog</title>
+        {% endif %}
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'home' %}">Django Blog</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">about</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'new' %}">New Post</a></li>
+                {% endif %}
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+                <li><a href="{% url 'update_profile' %}"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+                {% else %}
+                <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        <div class="container">
+          <div> {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+          </div >
+            {% block body_block %}{% endblock %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block body_block %}
+<div style="margin-left:20%;background:rgba(255,255,255,0.5);border:solid white 1px; border-radius:0.5em; width:56%; padding:2%;margin-top:5%;">
+<h2 align="center">User Profile Info</h2>
+  <img src="{{user.working_user.image.url}}" alt="dumb" style="height:29%; width:31%; border: 1px solid white; border-radius:50%;margin-left:36%;">
+
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+{{u_uform.as_p}}
+{{w_uform.as_p}}
+<button class="btn btn-info" type="submit">Update</button>
+</form>
+
+</div>
+{%  endblock %}

@@ -1,0 +1,67 @@
+{% extends 'blog/base.html' %}
+{% block body_block %}
+<div style="background:rgba(255,255,255,0.5);border:solid white 1px; border-radius:0.5em; width:60%; padding:2%; margin: auto; margin-top: 2%;">
+<h2 style="text-align: center;">Sign up</h2>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table style="width: 90%; margin-left:10%;">
+        <thead>
+            <th style="width: 40%;"></th>
+            <th style="width: 60%;"></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{u_form.first_name.label}}</td>
+                <td>{{u_form.first_name}}</td>
+            </tr>
+            <tr>
+                <td>{{u_form.last_name.label}}</td>
+                <td>{{u_form.last_name}}</td>
+            </tr>
+            <tr>
+                <td>{{u_form.username.label}}</td>
+                <td>{{u_form.username}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{u_form.username.help_text}}</td>
+            </tr>
+            <tr>
+                <td>{{u_form.email.label}}</td>
+                <td>{{u_form.email}}</td>
+            </tr>
+            <tr>
+                <td>{{u_form.password1.label}}</td>
+                <td>{{u_form.password1}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{u_form.password1.help_text}}</td>
+            </tr>
+            <tr>
+                <td>{{u_form.password2.label}}</td>
+                <td>{{u_form.password2}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{u_form.password2.help_text}}</td>
+            </tr>
+            <tr>
+                <td>{{w_form.mobile.label}}</td>
+                <td>{{w_form.mobile}}</td>
+            </tr>
+            <tr>
+                <td>{{w_form.image.label}}</td>
+                <td>{{w_form.image}}</td>
+            </tr>
+            <tr>
+                <td>{{w_form.gender.label}}</td>
+                <td>{{w_form.gender}}</td>
+            </tr>
+        </tbody>
+    </table>
+<button class="btn btn-info" type="submit">Sign Up</button>
+</form>
+<h4>Already have an account? <a href="{% url 'login' %}" class="link-success">Login</a></h4>
+</div>
+{% endblock %}

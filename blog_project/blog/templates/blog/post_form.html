@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% block body_block %}
+<div style="width:50%; margin-left:25%; border:solid 1px white; border-radius:0.5em; padding:2%;">
+<form method="POST">
+    {% csrf_token %}
+<table>
+  <thead>
+    <th style="width:40%;"></th>
+    <th style="width:60%;"></th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{form.title.label}}</td>
+      <td>{{form.title}}</td>
+    </tr>
+    <tr>
+      <td>{{form.content.label}}</td>
+      <td>{{form.content}}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+    <button class="btn btn-info" type="submit" style="margin-left:5s0%;">Post</button>
+</form>
+</div>
+{%  endblock %}

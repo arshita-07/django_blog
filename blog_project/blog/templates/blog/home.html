@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% block body_block %}
+        <h1>Home Page</h1>
+        {% if posts %}
+        {% for post in posts %}
+        <div style="border:solid white 1px; border-radius:0.5em; width:70%;margin-left:20%; padding:2%; margin:2%;">
+      <h2 style="text-align:center;"> <a href="{% url 'detail' post.id %}">{{post.title}}</a></h2> <br>
+      <h5>{{post.author}} </h5><br>
+        {{post.date_posted}} <br><br><br>
+        <p style="text-align:justified;">{{post.content}}</p>
+        <br>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h2>There are no posts yet!</h2>
+        {% endif %}
+{% endblock %}
